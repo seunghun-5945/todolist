@@ -44,18 +44,12 @@ const IconStyle = {
   cursor: "pointer"
 }
 
-const Item = ( {item} ) => {
-
-  const onDelete = () => {
-    return (
-      console.log("삭제됨")
-    );
-  }
+const Item = ({ item, handleDeleteItem }) => {
 
   return (
     <ItemFrame>
       <TextArea><StyledRadio type="checkBox"/><h1>{item}</h1></TextArea>
-      <BtnArea><MdModeEdit style={IconStyle}/><MdDelete style={IconStyle} onClick={onDelete}/></BtnArea>
+      <BtnArea><MdModeEdit style={IconStyle}/><MdDelete style={IconStyle}/></BtnArea>
     </ItemFrame>
   );
 }
