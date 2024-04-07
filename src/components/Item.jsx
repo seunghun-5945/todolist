@@ -1,13 +1,12 @@
 import React from "react";
 import styled from "styled-components";
-import { MdModeEdit } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 const ItemFrame = styled.div`
   width: 90%;
   height: 80px;
   display: flex;
-  border: 1px solid black;
+  border: 3px solid gray;
   margin-top: 10px;
   background-color: white;
 `;
@@ -18,8 +17,8 @@ const TextArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  border: 1px solid black;
   background-color: white;
+  box-sizing: border-box;
 `;
 
 const BtnArea = styled.div`
@@ -28,11 +27,12 @@ const BtnArea = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
+  border-left: 3px solid gray;
   background-color: white;
+  box-sizing: border-box;
 `;
 
-const StyledRadio = styled.input`
+const StyledCheckBox = styled.input`
   width: 10%;
   height: 50%;
   background-color: green;
@@ -44,12 +44,25 @@ const IconStyle = {
   cursor: "pointer"
 }
 
-const Item = ({ item, handleDeleteItem }) => {
+const Item = ({ item, onDelete, index }) => {
+
+  const handleDeleteItem = () => {
+    return (
+      onDelete(index)
+    );
+  }
+
+  const handleChecked = () => {
+    return (
+      <>
+      </>
+    );
+  }
 
   return (
     <ItemFrame>
-      <TextArea><StyledRadio type="checkBox"/><h1>{item}</h1></TextArea>
-      <BtnArea><MdModeEdit style={IconStyle}/><MdDelete style={IconStyle}/></BtnArea>
+      <TextArea><StyledCheckBox type="checkBox"/><h1>{item}</h1></TextArea>
+      <BtnArea><MdDelete style={IconStyle} onClick={handleDeleteItem} /></BtnArea>
     </ItemFrame>
   );
 }
