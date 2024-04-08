@@ -13,6 +13,7 @@ const Header = styled.div`
   width: 100%;
   height: 14%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -30,6 +31,10 @@ const Main = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+`;
+
+const DayArea = styled.div`
+  width: 
 `;
 
 const TimeBox = styled.div`
@@ -55,8 +60,11 @@ const Calander = () => {
   const [hour, setHour] = useState(new Date().getHours());
   const [minute, setMinute] = useState(new Date().getMinutes());
   const [second, setSecond] = useState(new Date().getSeconds());
-  const [day, setDay] = useState(new Date().getDay());
+  const [year, setYear] = useState(new Date().getFullYear());
+  const [month, setMonth] = useState(new Date().getMonth());
   const [date, setDate] = useState(new Date().getDate());
+  const [day, setDay] = useState(new Date().getDay());
+  const week = ['sunday' , 'monday' , 'tuesday' , 'wendnesday' , 'thursday' , 'friday' , 'saturday'];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,8 +72,10 @@ const Calander = () => {
       setHour(currentDate.getHours());
       setMinute(currentDate.getMinutes());
       setSecond(currentDate.getSeconds());
-      setDate(currentDate.get)
+      setYear(currentDate.getFullYear());
+      setMonth(currentDate.getMonth());
       setDate(currentDate.getDate());
+      setDay(currentDate.getDay());
     }, 1000); 
     return () => clearInterval(interval); 
   }, []);
@@ -74,7 +84,7 @@ const Calander = () => {
     <Container>
       <Header>
         <span>Now Time</span>
-        <span>{date}</span>
+        <span>{year} / {month + 1} / {date} / {week[day]}</span>
       </Header>
       <Main>
         <TimeBox style={{borderRadius:"20px 0px 0px 20px"}}><h1>{hour}</h1></TimeBox>
