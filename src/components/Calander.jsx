@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components"
 
 const Container = styled.div`
-  width: 1000px;
-  height: 800px;
+  width: 50%;
+  height: 90%;
   background-image: linear-gradient(to right, lightblue, lightgreen);  
   border: 3px solid gray;
   border-radius: 20px 0px 0px 20px;
@@ -16,6 +16,11 @@ const Header = styled.div`
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+
+  span {
+    font-family: 'continuous';
+    font-size: 40px;
+  }
 `;
 
 const Main = styled.div`
@@ -50,6 +55,8 @@ const Calander = () => {
   const [hour, setHour] = useState(new Date().getHours());
   const [minute, setMinute] = useState(new Date().getMinutes());
   const [second, setSecond] = useState(new Date().getSeconds());
+  const [day, setDay] = useState(new Date().getDay());
+  const [date, setDate] = useState(new Date().getDate());
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -57,6 +64,8 @@ const Calander = () => {
       setHour(currentDate.getHours());
       setMinute(currentDate.getMinutes());
       setSecond(currentDate.getSeconds());
+      setDate(currentDate.get)
+      setDate(currentDate.getDate());
     }, 1000); 
     return () => clearInterval(interval); 
   }, []);
@@ -64,7 +73,8 @@ const Calander = () => {
   return (
     <Container>
       <Header>
-        <h1>Now Time</h1>
+        <span>Now Time</span>
+        <span>{date}</span>
       </Header>
       <Main>
         <TimeBox style={{borderRadius:"20px 0px 0px 20px"}}><h1>{hour}</h1></TimeBox>

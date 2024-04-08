@@ -4,7 +4,7 @@ import { MdDelete } from "react-icons/md";
 
 const ItemFrame = styled.div`
   width: 90%;
-  height: 80px;
+  height: 13%;
   display: flex;
   border: 3px solid gray;
   margin-top: 10px;

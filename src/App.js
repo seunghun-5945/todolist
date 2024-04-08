@@ -22,6 +22,15 @@ const TitleArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  span {
+    font-family: 'continuous';
+    font-size: 40px;
+  }
+
+  h3 {
+    font-family: 'continuous';
+  }
 `;
 
 const BodyArea = styled.div`
@@ -34,8 +43,8 @@ const BodyArea = styled.div`
 `;
 
 const Frame = styled.div`
-  width: 600px;
-  height: 800px;
+  width: 30%;
+  height: 90%;
   border: 3px solid gray;
   border-radius: 0px 20px 20px 0px;
   background-color: white;
@@ -43,16 +52,21 @@ const Frame = styled.div`
 
 const Header = styled.div`
   width: 100%;
-  height: 100px;
+  height: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+
+  span {
+    font-family: 'continuous';
+    font-size: 40px;
+  }
 `;
 
 const Main = styled.div`
   width: 100%;
-  height: 600px;
+  height: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,7 +76,7 @@ const Main = styled.div`
 
 const Footer = styled.div`
   width: 100%;
-  height: 100px;
+  height: 15%;
   display: flex;
   flex-direction: row;
   border-top: 3px solid gray;
@@ -96,6 +110,8 @@ const App = () => {
   const [item, setItem] = useState("");
   const [todo, setTodo] = useState([]);
   const [count, setCount] = useState(0);
+  // const color1 = ['red', 'orange', 'yellow', 'green', 'lightblue', 'blue', 'purple']
+  // const color2 = ['purple', 'blue', 'lightblue', 'green', 'yellow', 'orange', 'red']
 
   const itemTextChange = (e) => {
     setItem(e.target.value);
@@ -125,6 +141,14 @@ const App = () => {
     }
   };
 
+  const backgroundChange = () => {
+    return (
+      <>
+      </>
+    );
+  }
+
+  
   useEffect(() => {
     const interval = setInterval(() => {
       nextLifeQuotes();
@@ -133,18 +157,24 @@ const App = () => {
     return () => clearInterval(interval);
   }, [count])
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      backgroundChange();
+    }, 1000);
+  }, []);
+
   return (
     <Container>
       <TitleArea>
-        <h1>{LifeQuotes[count].sentence}</h1>
-        <h2>{LifeQuotes[count].translate}</h2>
+        <span>{LifeQuotes[count].sentence}</span>
+        <h2 style={{color:"gray"}}>{LifeQuotes[count].translate}</h2>
         <h3>{LifeQuotes[count].person}</h3>
       </TitleArea>
       <BodyArea>
-        <Calander />
+        <Calander handleBackground={backgroundChange} />
         <Frame>
           <Header>
-            <h1>To Do List</h1>
+            <span>To Do List</span>
           </Header>
           <Main>
             {todo.map((todo, todoId) => (
