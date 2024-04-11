@@ -83,7 +83,7 @@ const Calander = () => {
   return (
     <Container>
       <Header>
-        <span>Now Time</span>
+        <span>현재 시간</span>
         <span>{year} / {month + 1} / {date} / {week[day]}</span>
       </Header>
       <Main>
